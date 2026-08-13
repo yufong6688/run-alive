@@ -1,0 +1,36 @@
+# happySenior 節奏設計檔
+# 每行設定都可以直接在右側文字編輯器修改；井字號開頭代表註解。
+BPM=96
+TOTAL_LOOPS=2
+MASTER_VOLUME=75
+MUSIC_VOLUME=45
+INSTRUCTOR=陳裕豐（阿豐）
+
+# 基本資料：保留未完成的模組時，請在 MODULE 前加上 #。
+MODULE=ＣＬ-０１-０４０７義大養生八段錦
+MODULE=ＣＬ-０１-０４９２運用中醫多元方式延緩失能（五禽戲）
+# MODULE=ＣＬ-０１-００６０音活音樂體適能
+# MODULE=ＣＬ-０１-０４９５小港醫院三動顧健康
+# MODULE=ＣＬ-０１-０２６８高醫大出力動起來
+MODULE=ＣＬ-０１-０１４２健體防跌協助員
+MODULE=ＣＬ-０１-０２６９動動健康班協助員
+
+# 群組設定：GROUP_SET 是右側按鈕；TOTAL_LOOPS 是目前所選群組的總循環次數。
+# GROUP=名稱|節奏（0-9、A-Z，X 代表休止）|本段循環次數
+GROUP_SET=群組1
+GROUP=暖身|10XX10XX|2
+GROUP=主節奏|AZBXX10|3
+GROUP=收尾|1234XXXX|1
+
+GROUP_SET=群組2
+GROUP=暖身|10XX10XX|2
+GROUP=主節奏|AZBXX10|3
+
+GROUP_SET=群組3
+GROUP=收尾|1234XXXX|1
+
+GROUP_SET=群組4
+GROUP=收尾|1234XXXX|1
+
+GROUP_SET=群組5
+GROUP=收尾|1234XXXX|1
