@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>happySenior 拍手節奏編輯器</title>
+<title>RunAlive 拍手節奏編輯器</title>
 <style>
 :root{--ink:#163c3e;--muted:#687777;--cream:#fff9ee;--teal:#168f92;--dark:#0e696c;--coral:#ff6c52;--yellow:#ffbd2e;--green:#83b94c;--line:#dce3db}
 *{box-sizing:border-box}html{background:var(--cream)}body{margin:0;background:radial-gradient(circle at 8% 8%,#ffbd2e28,transparent 28%),radial-gradient(circle at 92% 15%,#168f9220,transparent 28%),var(--cream);color:var(--ink);font-family:Arial,"Microsoft JhengHei",sans-serif}button,input,select,textarea{font:inherit}button{touch-action:manipulation}.app{width:min(1180px,calc(100% - 28px));margin:auto;padding:20px 0 40px}.card{background:#fffffff2;border:1px solid var(--line);box-shadow:0 14px 40px #1c4f4d16}
@@ -25,7 +25,7 @@
   <button id="profileToggle" class="toggle" title="隱藏基本資料">⌃</button>
   <div class="module-select"><select id="moduleSelect" aria-label="選擇目前模組"></select></div>
 </section>
-<div class="topbar"><div><small>happySenior 銀髮族教學工具</small><h2>拍手節奏編輯器</h2></div><div id="statusDot" class="status-dot"><i></i><span>待機中</span></div></div>
+<div class="topbar"><div><small>RunAlive 銀髮族教學工具</small><h2>拍手節奏編輯器</h2></div><div id="statusDot" class="status-dot"><i></i><span>待機中</span></div></div>
 <section class="hero">
   <div id="stage" class="stage card"><small id="stageSmall">目前節奏</small><div id="symbol" class="symbol">♪</div><h3 id="groupName">準備開始</h3><p id="status">正在讀取 default.txt…</p><div id="progress" class="progress"></div></div>
   <div class="playlist card"><div class="playlist-head"><div><span id="source" class="badge">default.txt</span><h3>節奏清單</h3></div><b id="groupCount">0 組</b></div><div id="setTabs" class="group-tabs"></div><div id="groupList" class="group-list"></div><div class="summary"><div><small>總循環</small><b id="totalLoopsView">1 次</b></div><div><small>已完成</small><b id="totalDone">0 次</b></div><div><small>本節奏</small><b id="groupDone">0 次</b></div></div><div class="actions"><button id="start" class="start">▶ 開始播放</button><button id="stop" class="stop" disabled>■ 停止</button></div></div>
@@ -36,14 +36,14 @@
   <div class="panel card"><h3>2　MP3 背景音樂</h3><label class="music"><input id="musicFile" type="file" accept="audio/mp3,audio/mpeg"><span id="musicName">選擇手機或電腦中的 MP3</span></label><label class="line"><span>背景音量</span><b id="musicVolumeView">45%</b></label><input id="musicVolume" type="range" min="0" max="100" value="45"></div>
 </section>
 <section class="sounds card"><h3>3　36 種樂器聲（點擊可試聽）</h3><div id="soundGrid" class="sound-grid"></div></section>
-<footer>陳裕豐（阿豐）・happySenior 銀髮族友善教學工具</footer>
+<footer>陳裕豐（阿豐）・RunAlive 銀髮族友善教學工具</footer>
 </main>
 <script>
 (function(){
 "use strict";
 var SYMBOLS="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var DEFAULT_TEXT=[
-"# happySenior 節奏設計檔",
+"# RunAlive 節奏設計檔",
 "# BPM：每分鐘拍數，範圍 40 到 180","BPM=96",
 "# TOTAL_LOOPS：目前群組總循環次數，0 代表無限","TOTAL_LOOPS=2",
 "# MASTER_VOLUME：樂器音量 0 到 100","MASTER_VOLUME=75",
@@ -127,7 +127,7 @@ function loadDefault(){
 $("profileToggle").onclick=function(){var p=$("profile"),compact=p.classList.toggle("compact");this.textContent=compact?"⌄":"⌃";this.title=compact?"展開基本資料":"隱藏基本資料"};
 $("start").onclick=start;$("stop").onclick=function(){stop("已停止播放")};$("apply").onclick=function(){stop("已套用文字設定");applyText($("editor").value,$("source").textContent)};$("reload").onclick=loadDefault;
 $("designFile").onchange=function(){var f=this.files&&this.files[0];if(f)f.text().then(function(t){stop();applyText(t,f.name)})};
-$("save").onclick=function(){var blob=new Blob([$("editor").value],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="happySenior-design.txt";a.click();URL.revokeObjectURL(url)};
+$("save").onclick=function(){var blob=new Blob([$("editor").value],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="run-alive-design.txt";a.click();URL.revokeObjectURL(url)};
 $("musicFile").onchange=function(){var f=this.files&&this.files[0];if(!f)return;if(musicUrl)URL.revokeObjectURL(musicUrl);musicUrl=URL.createObjectURL(f);audio=new Audio(musicUrl);$("musicName").textContent=f.name};
 $("bpm").oninput=function(){$("bpmView").textContent=this.value+" BPM";updateParam("BPM",this.value);config.bpm=Number(this.value);if(playing){clearInterval(timer);timer=setInterval(tick,Math.round(60000/config.bpm))}};
 $("totalLoops").onchange=function(){updateParam("TOTAL_LOOPS",Math.max(0,Number(this.value)));config.totalLoops=Math.max(0,Number(this.value));$("totalLoopsView").textContent=config.totalLoops===0?"無限":config.totalLoops+" 次"};

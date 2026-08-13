@@ -1,4 +1,4 @@
-# happySenior 節奏設計檔
+# RunAlive 節奏設計檔
 # 每行設定都可以直接在右側文字編輯器修改；井字號開頭代表註解。
 BPM=96
 TOTAL_LOOPS=2

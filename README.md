@@ -1,6 +1,6 @@
-# run-alive
+# RunAlive
 
-銀髮族課程入口網站（靜態版），復刻自母站 [happySenior](https://github.com/yufong6688/happySenior) 的 `docs/` 輸出。
+銀髮族課程入口網站（靜態版），復刻自母站 [happySenior](https://github.com/yufong6688/happySenior) 的 `docs/` 輸出，品牌已更名為 **RunAlive**。
 
 線上網址：https://yufong6688.github.io/run-alive/
 
